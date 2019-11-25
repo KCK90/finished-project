@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div>
+  <h1>Wybierz drugi obrazek a następnie naciśnij Upload</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if uploaded_file_url %}
+      <h2><a href="/porownaj">Drugi obrazek dodany, kliknij aby porównać!</a></h2>
+      <br>
+      <img src="{{ uploaded_file_url }}">
+  {% endif %}
+</div>
+
+
+{% endblock %}
